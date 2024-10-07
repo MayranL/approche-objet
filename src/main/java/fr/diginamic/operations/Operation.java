@@ -25,8 +25,6 @@ public abstract class Operation {
         this.montantOperation = montantOperation;
     }
 
-    public String getType(){
-        return "TYPE OPERATION";
-    }
+    public abstract String getType();
 
 }
