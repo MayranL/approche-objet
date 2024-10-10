@@ -48,5 +48,22 @@ public class TestVilles {
         for (Ville v : villes){
             System.out.println("Nom : "+v.getNom()+" et nombre habitants : "+v.getNbHabitants());
         }
+
+        for (int i=1; i < villes.size(); i++) {
+            Ville ville = villes.get(i);
+            int j=i-1;
+
+            while (j >= 0 && villes.get(j).compareTo(ville) > 0) {
+                villes.set(j+1, villes.get(j));
+                j--;
+            }
+            villes.set(j+1, ville);
+        }
+
+        // Afficher le contenu de la liste triée
+        System.out.println("Villes triées par ordre alphabétique ou nom :");
+        for (Ville ville : villes) {
+            System.out.println(ville.getNom()+ville.getNbHabitants());
+        }
     }
 }
