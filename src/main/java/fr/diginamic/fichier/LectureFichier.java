@@ -21,10 +21,9 @@ public class LectureFichier {
         // Exercice LireFichierAvecInstanciation
         ArrayList<Commune> listCommune = new ArrayList<>();
         for (int i =1; i< lines.size();i++){
-            System.out.println(lines.get(i));
             String[] tokens = lines.get(i).split(";");
-            String nbPop = tokens[7].replaceAll("\\s","");
-            Commune commune = new Commune(tokens[1],tokens[2],tokens[0],Integer.parseInt(nbPop));
+            String nbPop = tokens[9].trim().replaceAll("\\s","");
+            Commune commune = new Commune(tokens[6],tokens[2],tokens[0],Integer.parseInt(nbPop));
             listCommune.add(commune);
         }
 
@@ -32,7 +31,7 @@ public class LectureFichier {
         Path pathNew= Paths.get("C:\\Users\\lmayran\\IdeaProjects\\JavaObjet\\approche-objet\\recensement2.csv");
         ArrayList<String> finalList = new ArrayList<>();
         for (Commune c : listCommune){
-            if(c.getPopulationTotale()>25000){
+            if(c.getPopulationTotale()>300000){
                 finalList.add(c.getNom());
                 finalList.add(c.getCodeDepartement());
                 finalList.add(c.getNomRegion());
@@ -40,6 +39,6 @@ public class LectureFichier {
             }
         }
 
-        Files.write(pathNew,finalList,StandardCharsets.UTF_8);
+        Files.write(pathNew,finalList);
     }
 }
